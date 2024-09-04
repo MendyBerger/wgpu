@@ -1350,7 +1350,7 @@ name = "deno_webgpu"
 version = "0.85.0"
 dependencies = [
  "deno_core",
- "raw-window-handle 0.6.0",
+ "raw-window-handle 0.6.2",
  "serde",
  "tokio",
  "wgpu-core 0.19.0",
@@ -2568,9 +2568,9 @@ dependencies = [
 
 [[package]]
 name = "linux-raw-sys"
-version = "0.4.12"
+version = "0.4.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c4cd1a83af159aa67994778be9070f0ae1bd732942279cabb14f86f986a21456"
+checksum = "78b3ae25bc7c8c38cec158d1f2757ee79e9b3740fbc7ccf0e59e4b08d793fa89"
 
 [[package]]
 name = "litrs"
@@ -3541,7 +3541,7 @@ version = "0.19.0"
 dependencies = [
  "env_logger",
  "log",
- "raw-window-handle 0.6.0",
+ "raw-window-handle 0.6.2",
  "ron",
  "serde",
  "wgpu-core 0.19.0",
@@ -3785,6 +3785,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "42a9830a0e1b9fb145ebb365b8bc4ccd75f290f98c0247deafbbe2c75cefb544"
 
 [[package]]
+name = "raw-window-handle"
+version = "0.6.2"
+source = "git+https://github.com/wasi-gfx/raw-window-handle.git?rev=498cb391869d6ecee601e525a354ca27e8a86130#498cb391869d6ecee601e525a354ca27e8a86130"
+
+[[package]]
 name = "rayon"
 version = "1.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3949,9 +3954,9 @@ dependencies = [
 
 [[package]]
 name = "rustix"
-version = "0.38.34"
+version = "0.38.35"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "70dc5ec042f7a43c4a73241207cecc9873a06d45debb38b329f8541d85c2730f"
+checksum = "a85d50532239da68e9addb745ba38ff4612a242c1c7ceea689c4bc7c2f43c36f"
 dependencies = [
  "bitflags 2.6.0",
  "errno",
@@ -5052,9 +5057,9 @@ dependencies = [
 
 [[package]]
 name = "wasm-encoder"
-version = "0.215.0"
+version = "0.216.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4fb56df3e06b8e6b77e37d2969a50ba51281029a9aeb3855e76b7f49b6418847"
+checksum = "04c23aebea22c8a75833ae08ed31ccc020835b12a41999e58c31464271b94a88"
 dependencies = [
  "leb128",
 ]
@@ -5404,24 +5409,24 @@ dependencies = [
 
 [[package]]
 name = "wast"
-version = "215.0.0"
+version = "216.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1ff1d00d893593249e60720be04a7c1f42f1c4dc3806a2869f4e66ab61eb54cb"
+checksum = "f7eb1f2eecd913fdde0dc6c3439d0f24530a98ac6db6cb3d14d92a5328554a08"
 dependencies = [
  "bumpalo",
  "leb128",
  "memchr",
  "unicode-width",
- "wasm-encoder 0.215.0",
+ "wasm-encoder 0.216.0",
 ]
 
 [[package]]
 name = "wat"
-version = "1.215.0"
+version = "1.216.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "670bf4d9c8cf76ae242d70ded47c546525b6dafaa6871f9bcb065344bf2b4e3d"
+checksum = "ac0409090fb5154f95fb5ba3235675fd9e579e731524d63b6a2f653e1280c82a"
 dependencies = [
- "wast 215.0.0",
+ "wast 216.0.0",
 ]
 
 [[package]]
@@ -5658,7 +5663,7 @@ dependencies = [
  "naga 0.19.0",
  "parking_lot",
  "profiling",
- "raw-window-handle 0.6.0",
+ "raw-window-handle 0.6.2",
  "serde",
  "smallvec",
  "static_assertions",
@@ -5686,7 +5691,7 @@ dependencies = [
  "once_cell",
  "parking_lot",
  "profiling",
- "raw-window-handle 0.6.0",
+ "raw-window-handle 0.6.2",
  "ron",
  "rustc-hash",
  "serde",
@@ -5832,7 +5837,7 @@ dependencies = [
  "parking_lot",
  "profiling",
  "range-alloc",
- "raw-window-handle 0.6.0",
+ "raw-window-handle 0.6.2",
  "renderdoc-sys",
  "rustc-hash",
  "smallvec",
@@ -5933,7 +5938,7 @@ dependencies = [
  "png",
  "pollster",
  "profiling",
- "raw-window-handle 0.6.0",
+ "raw-window-handle 0.6.2",
  "serde",
  "serde_json",
  "wasm-bindgen",

@@ -6,7 +6,11 @@ use std::{
     sync::Arc,
 };
 
-use wasi::webgpu::{graphics_context::GraphicsContext, mini_canvas::MiniCanvas, webgpu};
+use wasi::webgpu::{
+    graphics_context::GraphicsContext,
+    mini_canvas::{CreateDesc, MiniCanvas},
+    webgpu,
+};
 
 wit_bindgen::generate!({
     path: "../wit",
@@ -100,7 +104,14 @@ impl crate::Context for ContextWasiWebgpu {
         &self,
         _target: SurfaceTargetUnsafe,
     ) -> Result<(Self::SurfaceId, Self::SurfaceData), crate::CreateSurfaceError> {
-        todo!()
+        let context = GraphicsContext::new();
+        let canvas = MiniCanvas::new(CreateDesc {
+            height: 100,
+            width: 100,
+            offscreen: false,
+        });
+        canvas.connect_graphics_context(&context);
+        Ok(((), (canvas, Arc::new(context))))
     }
 
     fn instance_request_adapter(
@@ -205,7 +216,31 @@ impl crate::Context for ContextWasiWebgpu {
         _adapter: &Self::AdapterId,
         _adapter_data: &Self::AdapterData,
     ) -> wgt::SurfaceCapabilities {
-        todo!()
+        let mut formats = vec![
+            wgt::TextureFormat::Rgba8Unorm,
+            wgt::TextureFormat::Bgra8Unorm,
+            wgt::TextureFormat::Rgba16Float,
+        ];
+        let mut mapped_formats = formats.iter().map(|format| {
+            let format: webgpu::GpuTextureFormat = (*format).into();
+            format
+        });
+        // Preferred canvas format will only be either "rgba8unorm" or "bgra8unorm".
+        // https://www.w3.org/TR/webgpu/#dom-gpu-getpreferredcanvasformat
+        let preferred_format = self.0.get_preferred_canvas_format();
+        if let Some(index) = mapped_formats.position(|format| format == preferred_format) {
+            formats.swap(0, index);
+        }
+
+        wgt::SurfaceCapabilities {
+            // https://gpuweb.github.io/gpuweb/#supported-context-formats
+            formats,
+            // Doesn't really have meaning on the web.
+            present_modes: vec![wgt::PresentMode::Fifo],
+            alpha_modes: vec![wgt::CompositeAlphaMode::Opaque],
+            // Statically set to RENDER_ATTACHMENT for now. See https://gpuweb.github.io/gpuweb/#dom-gpucanvasconfiguration-usage
+            usages: wgt::TextureUsages::RENDER_ATTACHMENT,
+        }
     }
 
     fn surface_configure(

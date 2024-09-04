@@ -55,12 +55,12 @@ const EXAMPLES: &[ExampleDesc] = &[
     //     webgl: false, // No canvas for WebGL
     //     webgpu: true,
     // },
-    // ExampleDesc {
-    //     name: "hello_triangle",
-    //     function: crate::hello_triangle::main,
-    //     webgl: true,
-    //     webgpu: true,
-    // },
+    ExampleDesc {
+        name: "hello_triangle",
+        function: crate::hello_triangle::main,
+        webgl: true,
+        webgpu: true,
+    },
     // ExampleDesc {
     //     name: "hello_windows",
     //     function: crate::hello_windows::main,
@@ -97,12 +97,12 @@ const EXAMPLES: &[ExampleDesc] = &[
         webgl: false, // No compute
         webgpu: true,
     },
-    // ExampleDesc {
-    //     name: "shadow",
-    //     function: crate::shadow::main,
-    //     webgl: true,
-    //     webgpu: true,
-    // },
+    ExampleDesc {
+        name: "shadow",
+        function: crate::shadow::main,
+        webgl: true,
+        webgpu: true,
+    },
     // ExampleDesc {
     //     name: "skybox",
     //     function: crate::skybox::main,

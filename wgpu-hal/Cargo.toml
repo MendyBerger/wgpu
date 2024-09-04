@@ -75,7 +75,8 @@ required-features = ["gles"]
 bitflags = "2"
 parking_lot = ">=0.11,<0.13"
 profiling = { version = "1", default-features = false }
-raw-window-handle = "0.6"
+# raw-window-handle = "0.6"
+raw-window-handle = { git = "https://github.com/wasi-gfx/raw-window-handle.git", rev = "498cb391869d6ecee601e525a354ca27e8a86130" }
 thiserror = "1"
 once_cell = "1.19.0"
 
